@@ -1,0 +1,147 @@
+import java.text.SimpleDateFormat;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class Call {
+	private String Type;
+	private String callType;
+	private double cost;
+	private Date duration;
+	private Date date;
+	private Contact contact;
+	public String getType() {
+		return Type;s
+	}
+	public void setType(String type) {
+		Type = type;
+	}
+	public String getCallType() {
+		return callType;
+	}
+	public void setCallType(String callType) {
+		this.callType = callType;
+	}
+	public double getCost() {
+		return cost;
+	}
+	public void setCost(double cost) {
+		this.cost = cost;
+	}
+	public Date getDuration() {
+		return duration;
+	}
+	public void setDuration(Date duration) {
+		this.duration = duration;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public Contact getContact() {
+		return contact;
+	}
+	public void setContact(Contact contact) {
+		this.contact = contact;
+	}
+	public Call(String type, String callType, double cost, Date duration, Date date, Contact contact) {
+		super();
+		Type = type;
+		this.callType = callType;
+		this.cost = cost;
+		this.duration = duration;
+		this.date = date;
+		this.contact = contact;
+	}
+	public Call() {
+		super();
+	}
+	@Override
+	public String toString() {
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+		 SimpleDateFormat sdf1 = new SimpleDateFormat("dd/MM/yyyy");
+		 String time=sdf.format(duration);
+		 String date1=sdf1.format(date);
+		return   contact + "	" + Type+"	" +callType +"    " +cost +"	"+ time +" 	"+date1+"\n" ;
+	}
+	public static Map<String,Integer> monthWiseCount(List<Call> callList){
+		Map<String,Integer> map = new HashMap<String,Integer>();
+		int jan=0,feb = 0,mar=0,aprl=0,may=0,jun=0,jul=0,aug=0,sep=0,oct=0,nov=0,dec=0;
+		for(Call e : callList) {
+			String date =new SimpleDateFormat("dd/MM/yyyy").format(e.getDate());
+			String datearray[] = date.split("/");
+			//System.out.println(datearray[1]);
+			switch(datearray[1]) {
+			case "01" :
+				jan++;
+				break;
+			case "02" :
+				feb++;
+				break;
+			case "03" :
+				 mar++;
+				 break;
+			case "04" :
+					aprl++;
+					break;
+			case "05" :
+				may++;
+				break;
+			case "06" :
+				jun++;
+				break;
+			case "07" :
+				jul++;
+				break;
+			case "08" :
+				aug++;
+				break;
+			case "09" :
+				sep++;
+				break;
+			case "10" :
+				oct++;
+				break;
+			case "11" :
+				nov++;
+				break;
+			case "12" :
+				dec++;
+				break;
+			}
+		}
+		if(jan!=0)
+		map.put("Jan", jan);
+		if(feb!=0)
+		map.put("Feb",feb);
+		if(mar!=0)
+		map.put("Mar",mar);
+		if(aprl!=0)
+		map.put("Aprl",aprl);
+		if(may!=0)
+		map.put("May",may);
+		if(jun!=0)
+		map.put("Jun",jun);
+		if(jul!=0)
+		map.put("Jul",jul);
+		if(aug!=0)
+		map.put("Aug",aug);
+		if(sep!=0)
+		map.put("Sep",sep);
+		if(oct!=0)
+		map.put("Oct",oct);
+		if(nov!=0)
+		map.put("Nov",nov);
+		if(dec!=0)
+		map.put("Dec",dec);
+		
+	return map;	
+		
+	}
+	
+	
+	
