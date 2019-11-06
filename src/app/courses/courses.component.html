@@ -1,0 +1,16 @@
+<h1>CoursesComponent</h1>
+<hr>
+<table class="table">
+<tr>
+<th>Sr no</th>
+<th>Title</th>
+<th>Description</th>
+<th>Category</th>
+</tr>
+<tr *ngFor="let course of courseData">
+<td>{{course.id}}</td>
+<td>{{course.titles.description |uppercase}}</td>
+<td>{{course.titles.longDescription }}</td>
+<td>{{course.category |lowercase}}</td>
+</tr>
+</table>
